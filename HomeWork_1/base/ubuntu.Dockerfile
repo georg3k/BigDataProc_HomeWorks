@@ -25,13 +25,13 @@ RUN apt-get update && apt-get install -y openssh-server software-properties-comm
 ENV HOME /home/bigdata
 
 # Create user
-RUN useradd -m -p '$(openssl passwd -l bigdata)' bigdata
+RUN useradd -m -p "$(openssl passwd -1 bigdata)" bigdata
 
 # Set current dir
 WORKDIR /home/bigdata
 
 # Add sudo permission for hadoop user to start ssh service
-RUN usermod -aG sudo bigdata
+RUN echo "bigdata ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Copy the entrypoint script
 COPY entrypoint.sh /usr/local/bin/
@@ -48,7 +48,7 @@ USER bigdata
 
 # Install Hadoop
 RUN mkdir hadoop && \
-    wget -P /home/bigdata/sources https://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar.gz && \
+    wget -q -P /home/bigdata/sources https://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar.gz && \
     tar xf sources/hadoop-3.1.2.tar.gz --directory hadoop --strip-components 1 && \
     rm -rf sources/hadoop-3.1.2.tar.gz
 
