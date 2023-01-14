@@ -1,6 +1,6 @@
 FROM hadoop-base-image
 
-LABEL maintainer="Ваше имя <e-mail>"
+LABEL maintainer="Georgiy Kryuchkov kryuchkovgm@bmstu.ru, Natalia Ovchinnikova ovchinnikovanp@student.bmstu.ru"
 
 USER root
 
@@ -16,6 +16,6 @@ RUN chmod 400 .ssh/id_rsa && \
 USER bigdata
 
 # Format Namenode
-# Ваш код
+RUN hdfs namenode -format -force
 
 ENTRYPOINT ["sh", "/usr/local/bin/entrypoint.sh"]

@@ -4,7 +4,12 @@ echo "Start SSH service"
 sudo service ssh start
 
 echo "Start Hadoop daemons"
-# Ваш код
+
+hdfs --daemon start namenode
+hdfs --daemon start secondarynamenode
+
+yarn --daemon start resourcemanager
+
 mapred --daemon start historyserver
 
 if [ -d "$HOME/data" ]; then

@@ -4,6 +4,6 @@ echo "Start SSH service"
 sudo service ssh start
 
 echo "Start Hadoop daemons"
-# Ваш код
+hdfs --daemon start datanode
 
 tail -f /dev/null
