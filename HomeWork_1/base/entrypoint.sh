@@ -17,7 +17,7 @@ sudo service ssh start
 
 # Start namenode and datanode
 hdfs --daemon start namenode
-hdfs --daemon start datanode
+hdfs --daemon start datanodem
 
 echo "The entrypoint script is completed"
 

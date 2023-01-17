@@ -146,21 +146,16 @@ docker exec master bash yarn jar /home/bigdata/hadoop/share/hadoop/tools/lib/had
 
 Запуск задачи с помощью `yarn`:
 
-<center>
 ![Yarn](./img/report_1.png "yarn")
-/center>
 
 Проверка и вывод содержимого результатов с помощью `hdfs`:
 
-<center>
 ![HDFS](./img/report_2.png "hdfs")
-/center>
+
 
 Информация об успешной работе map-reduce задачи в веб-интерфейсе:
 
-<center>
 ![Web](./img/report_3.png "web")
-/center>
 
 После выполнения остановите контейнеры:
 
