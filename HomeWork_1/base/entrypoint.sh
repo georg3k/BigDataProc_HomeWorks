@@ -9,14 +9,15 @@ ssh-keygen -t rsa -b 4096 -f .ssh/id_rsa -P ""
 chmod 400 .ssh/id_rsa
 
 # Format Namenode
-# Ваш код
+hdfs namenode -format -force
 
 # Start SSH Service
 echo "Start SSH"
 sudo service ssh start
 
 # Start namenode and datanode
-# Ваш код
+hdfs --daemon start namenode
+hdfs --daemon start datanode
 
 echo "The entrypoint script is completed"
 

@@ -12,8 +12,8 @@ services:
       - "19888:19888"                 # History Server
     container_name: master
     volumes: 
-      - ./app:/home/bigdata/app       # jar files
-      - ./data:/home/bigdata/data     # data to copy to HDFS
+      - ../HomeWork_2/app:/home/bigdata/app       # jar files
+      - ../HomeWork_2/data:/home/bigdata/data     # data to copy to HDFS
     networks:
       - hd-network
 

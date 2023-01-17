@@ -102,8 +102,12 @@ Found 1 items
 
 
 ```
-docker exec master bash \
-    Ваш код
+docker exec master bash yarn jar /home/bigdata/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.1.2.jar \
+                            -D mapreduce.job.reduces=2 \
+                            -file /home/bigdata/app/py/wordcountapp/tokenizer_mapper.py -mapper 'python tokenizer_mapper.py' \
+                            -file /home/bigdata/app/py/wordcountapp/intsum_reducer.py -reducer 'python intsum_reducer.py' \
+                            -input /data/war_and_peace.txt \
+                            -output /data/output
 ```
 
 Проверьте список приложений, выполняемых на YARN-кластере:
@@ -140,7 +144,23 @@ docker exec master bash \
 
 Выполните команду в master-node кластера по просмотру содержимого `hdfs`  содержимого каждого файла результата. Результат представьте в виде кода команд и снимков экрана с результатом выполнения команд в терминале и с помощью Hadoop Web UI.
 
+Запуск задачи с помощью `yarn`:
 
+<center>
+![Yarn](./img/report_1.png "yarn")
+/center>
+
+Проверка и вывод содержимого результатов с помощью `hdfs`:
+
+<center>
+![HDFS](./img/report_2.png "hdfs")
+/center>
+
+Информация об успешной работе map-reduce задачи в веб-интерфейсе:
+
+<center>
+![Web](./img/report_3.png "web")
+/center>
 
 После выполнения остановите контейнеры:
 
